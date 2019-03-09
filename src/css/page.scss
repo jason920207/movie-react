@@ -1,0 +1,128 @@
+
+.moviedetail {
+    background-image: radial-gradient(circle at 20% 20%, #99CCCC, #7171B7);
+}
+
+
+/*
+* ==========================================================
+*     FEATURED POSTS SECTION
+* ==========================================================
+*/
+
+section.featured-posts .row:last-of-type {
+  margin-bottom: 0;
+}
+
+section.featured-posts p {
+  font-weight: 400;
+  color: #777;
+  font-size: 0.95em;
+}
+
+section.featured-posts .text-inner {
+  padding: 70px 30px;
+  height: 100%;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+section.featured-posts a {
+  color: inherit;
+  text-decoration: none;
+}
+
+section.featured-posts h2 {
+  line-height: 1.1em;
+  color: #333;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+section.featured-posts h2:hover {
+  color: #555;
+}
+
+section.featured-posts .avatar {
+  max-width: 40px;
+  min-width: 40px;
+  height: 40px;
+  overflow: hidden;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+section.featured-posts .title,
+section.featured-posts .date,
+section.featured-posts .comments {
+  font-size: 0.8em;
+  font-weight: 400;
+  color: #999;
+}
+
+section.featured-posts .title i,
+section.featured-posts .date i,
+section.featured-posts .comments i {
+  margin-right: 5px;
+}
+
+section.featured-posts .title::after,
+section.featured-posts .date::after,
+section.featured-posts .comments::after {
+  content: '|';
+  display: inline-block;
+  margin: 0 7px;
+  font-size: 0.9em;
+  color: #ccc;
+}
+
+section.featured-posts .comments::after {
+  display: none;
+}
+
+section.featured-posts .image img {
+  height: 100%;
+}
+
+section.featured-posts .post-header {
+  margin-bottom: 10px;
+}
+
+section.featured-posts .post-footer {
+  margin-top: 30px;
+}
+
+/* Featured Posts Section Media Query ------------------------------------- */
+@media (max-width: 991px) {
+  section.featured-posts .image {
+    -webkit-box-ordinal-group: 2;
+    -ms-flex-order: 1;
+    order: 1;
+    max-height: 300px;
+    min-height: auto !important;
+  }
+  section.featured-posts .image img {
+    width: 100%;
+    height: auto !important;
+  }
+  section.featured-posts .text {
+    -webkit-box-ordinal-group: 3;
+    -ms-flex-order: 2;
+    order: 2;
+  }
+}
+
+@media (max-width: 575px) {
+  section.featured-posts .post-footer {
+    font-size: 0.9em;
+  }
+}
+
+@media (max-width: 350px) {
+  section.featured-posts .text-inner {
+    padding: 15px;
+  }
+  section.featured-posts .post-footer {
+    font-size: 0.75em;
+  }
+}

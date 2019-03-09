@@ -8,6 +8,8 @@ import SignUp from './auth/components/SignUp'
 import SignIn from './auth/components/SignIn'
 import SignOut from './auth/components/SignOut'
 import ChangePassword from './auth/components/ChangePassword'
+import Movies from './page/components/Movies'
+import Movie from './page/components/Movie'
 
 import Alert from 'react-bootstrap/Alert'
 
@@ -48,7 +50,7 @@ class App extends Component {
             </Alert.Heading>
           </Alert>
         ))}
-        <main className="container">
+        <main className="container-fluid">
           <Route path='/sign-up' render={() => (
             <SignUp alert={this.alert} setUser={this.setUser} />
           )} />
@@ -60,6 +62,12 @@ class App extends Component {
           )} />
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword alert={this.alert} user={user} />
+          )} />
+          <Route exact path='/movies' render={() => (
+            <Movies alert={this.alert} />
+          )} />
+          <Route path='/movies/:id' render={() => (
+            <Movie alert={this.alert} />
           )} />
         </main>
       </React.Fragment>
