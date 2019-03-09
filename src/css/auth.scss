@@ -1,0 +1,41 @@
+.bg-login-image {
+  background: url("https://images.unsplash.com/photo-1540325383631-91524e3c1283?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=657&q=80");
+  background-position: center;
+  background-size: cover;
+}
+
+.bg-register-image {
+  background: url("https://images.unsplash.com/photo-1488900128323-21503983a07e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1268&q=80");
+  background-position: center;
+  background-size: cover;
+}
+
+.bg-password-image {
+  background: url("https://images.unsplash.com/photo-1489069313310-63735a4f3010?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=966&q=80");
+  background-position: center;
+  background-size: cover;
+}
+
+.user .form-control-user {
+    font-size: .8rem;
+    border-radius: 10rem;
+    padding: 1.5rem 1rem;
+}
+
+.user .btn-user {
+    font-size: .8rem;
+    border-radius: 10rem;
+    padding: .75rem 1rem;
+}
+
+.google {
+    color: #fff !important;
+    background-color: #ea4335 !important;
+    border-color: #fff !important;
+}
+
+.facebook {
+  color: #fff !important;
+  background-color: #3b5998 !important;
+  border-color: #fff !important;
+}
