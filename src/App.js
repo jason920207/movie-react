@@ -17,13 +17,19 @@ class App extends Component {
 
     this.state = {
       user: null,
-      alerts: []
+      alerts: [],
+      bgColor: 'light',
+      navColor: 'light'
     }
   }
 
   setUser = user => this.setState({ user })
 
   clearUser = () => this.setState({ user: null })
+
+  setColor = (bg, nav) => {
+    this.setState({ bgColor: bg, navColor: nav })
+  }
 
   alert = (message, type) => {
     this.setState({ alerts: [...this.state.alerts, { message, type }] })
@@ -34,7 +40,7 @@ class App extends Component {
 
     return (
       <React.Fragment>
-        <Header user={user} />
+        <Header user={user} setColor={this.setColor} bgColor={this.state.bgColor} navColor={this.state.navColor} />
         {alerts.map((alert, index) => (
           <Alert key={index} dismissible variant={alert.type}>
             <Alert.Heading>

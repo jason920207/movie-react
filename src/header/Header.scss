@@ -4,9 +4,6 @@ $charcoal: #bbb;
   align-items: center;
   border-bottom: 1px solid $charcoal;
   display: flex;
-  height: 100px;
-  padding: 0 20px;
-
   a,
   span {
     font-size: 1.2em;
@@ -47,4 +44,14 @@ $charcoal: #bbb;
       width: 80%;
     }
   }
+}
+
+.btn-circle {
+    width: 30px;
+    height: 30px;
+    padding: 6px 0px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.42857;
 }
