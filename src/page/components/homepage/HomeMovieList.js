@@ -14,6 +14,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 
 import { Link } from 'react-router-dom'
 import Moment from 'react-moment'
+import Star from '../Star'
 
 const styles = theme => ({
   card: {
@@ -64,6 +65,9 @@ class RecipeReviewCard extends React.Component {
           <CardContent>
             <Typography gutterBottom variant="h5" component="h2">
               <Link to={`/movies/${movie._id}`}>{movie.title}(<Moment format="YYYY">{movie.publishDate}</Moment>)</Link>
+            </Typography>
+            <Typography gutterBottom variant="h5" component="h2">
+              <Star />
             </Typography>
           </CardContent>
           <CardActions className={classes.actions} disableActionSpacing>

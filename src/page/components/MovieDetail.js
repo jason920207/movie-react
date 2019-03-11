@@ -4,6 +4,8 @@ import { withRouter } from 'react-router-dom'
 import { updateFavorite, getUser, updateWishlist } from '../api'
 import FavoriteIcon from '@material-ui/icons/Favorite'
 import IconButton from '@material-ui/core/IconButton'
+import Star from './Star'
+import Comment from './comment/Comment'
 
 class MovieDetail extends Component {
   constructor (props) {
@@ -106,6 +108,7 @@ class MovieDetail extends Component {
               <div className="col-md-9 p-4">
                 <h1>{movie.title}(<Moment format="YYYY">{movie.publishDate}</Moment>)</h1>
                 {this.props.user ? this.likeButton() : ''}
+                <Star />
               </div>
             </div>
           </div>
@@ -129,6 +132,7 @@ class MovieDetail extends Component {
           </div>
           <hr />
         </div>
+        <Comment />
       </main>
     )
   }
