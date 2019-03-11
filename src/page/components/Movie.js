@@ -26,7 +26,12 @@ class Movie extends Component {
 
     return (
       <Fragment>
-        <MovieDetail movie={movie}/>
+        <MovieDetail
+          movie={movie}
+          user={this.props.user ? this.props.user : ''}
+          setUser={this.props.setUser}
+          alert={this.props.alert}
+        />
       </Fragment>
     )
   }

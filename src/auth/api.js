@@ -53,3 +53,45 @@ export const changePassword = (passwords, user) => {
     }
   })
 }
+
+// export const createFavorite = (id) => {
+//   return axios({
+//     url: apiUrl + '/favorites',
+//     method: 'POST',
+//     data: {
+//       movies: [],
+//       owner: id
+//     }
+//   })
+// }
+//
+// export const createWishlist = (id) => {
+//   return axios({
+//     url: apiUrl + '/wishlists',
+//     method: 'POST',
+//     data: {
+//       movies: [],
+//       owner: id
+//     }
+//   })
+// }
+
+export const getFavorite = (token) => {
+  return axios({
+    url: apiUrl + '/favorites',
+    method: 'GET',
+    headers: {
+      'Authorization': `Token token=${token}`
+    }
+  })
+}
+
+export const getWishlist = (token) => {
+  return axios({
+    url: apiUrl + '/wishlists',
+    method: 'GET',
+    headers: {
+      'Authorization': `Token token=${token}`
+    }
+  })
+}

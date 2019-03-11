@@ -9,6 +9,7 @@ class SignUp extends Component {
     super()
 
     this.state = {
+      token: '',
       email: '',
       password: '',
       passwordConfirmation: ''
@@ -25,8 +26,24 @@ class SignUp extends Component {
     const { alert, history, setUser } = this.props
 
     signUp(this.state)
+      // .then((res) => {
+      //   createFavorite(res.data.user._id)
+      //   return res.data.user._id
+      // })
+      // .then((id) => createWishlist(id))
       .then(() => signIn(this.state))
-      .then(res => setUser(res.data.user))
+      .then(res => {
+        setUser(res.data.user)
+        // this.setState({ token: res.data.user.token })
+        return res.data.user.token
+      })
+      // .then(getFavorite)
+      // .then(res => {
+      //   setFavorite(res.data.favorite.movies)
+      //   return this.state.token
+      // })
+      // .then(getWishlist)
+      // .then(res => setwishlist(res.data.wishlist.movies))
       .then(() => alert(messages.signUpSuccess, 'success'))
       .then(() => history.push('/'))
       .catch(error => {

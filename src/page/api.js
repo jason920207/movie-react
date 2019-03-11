@@ -14,3 +14,39 @@ export const getMovie = (id) => {
     method: 'get'
   })
 }
+
+export const updateFavorite = (user, data) => {
+  return axios({
+    url: apiUrl + '/favorite/' + user._id,
+    method: 'PATCH',
+    headers: {
+      'Authorization': `Token token=${user.token}`
+    },
+    data: {
+      'movies': data
+    }
+  })
+}
+
+export const updateWishlist = (user, data) => {
+  return axios({
+    url: apiUrl + '/wishlist/' + user._id,
+    method: 'PATCH',
+    headers: {
+      'Authorization': `Token token=${user.token}`
+    },
+    data: {
+      'movies': data
+    }
+  })
+}
+
+export const getUser = (user) => {
+  return axios({
+    url: apiUrl + '/users/' + user._id,
+    method: 'GET',
+    headers: {
+      'Authorization': `Token token=${user.token}`
+    }
+  })
+}
