@@ -12,6 +12,7 @@ import Movies from './page/components/Movies'
 import Movie from './page/components/Movie'
 import Favorite from './page/components/Favorite'
 import Wishlist from './page/components/Wishlist'
+import Home from './page/components/homepage/Home'
 
 import Alert from 'react-bootstrap/Alert'
 
@@ -85,6 +86,9 @@ class App extends Component {
           )} />
           <AuthenticatedRoute user={user} path='/:id/wishlists' render={() => (
             <Wishlist user={user} setUser={this.setUser}/>
+          )} />
+          <Route exact path='/' render={() => (
+            <Home />
           )} />
         </main>
       </React.Fragment>

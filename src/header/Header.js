@@ -60,7 +60,7 @@ class Header extends Component {
     const { user, bgColor, navColor } = this.props
     const { authenticatedOptions, unauthenticatedOptions, alwaysOptions, userOptions } = this
     return (
-      <header className="main-header">
+      <header className="main-header mb-3">
         <Navbar bg={bgColor} variant={navColor} expand="lg">
           <Link to='/'><Navbar.Brand>Movie-React</Navbar.Brand></Link>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />

@@ -2,6 +2,8 @@ import React, { Component, Fragment } from 'react'
 import Moment from 'react-moment'
 import { withRouter } from 'react-router-dom'
 import { updateFavorite, getUser, updateWishlist } from '../api'
+import FavoriteIcon from '@material-ui/icons/Favorite'
+import IconButton from '@material-ui/core/IconButton'
 
 class MovieDetail extends Component {
   constructor (props) {
@@ -51,8 +53,12 @@ class MovieDetail extends Component {
     return (
       <Fragment>
         { newfavorite.length
-          ? <button className="btn btn-danger" onClick={this.deleteFavorite}>UnLike</button>
-          : <button className="btn btn-primary" onClick={this.addFavorite}>Like</button>
+          ? (<IconButton aria-label="Add to favorites" onClick={this.deleteFavorite} color="secondary">
+            <FavoriteIcon />
+          </IconButton>)
+          : (<IconButton aria-label="Add to favorites" onClick={this.addFavorite}>
+            <FavoriteIcon />
+          </IconButton>)
         }
         { newwishlist.length
           ? <button className="btn btn-danger" onClick={this.deleteWishlist}>Remove From Wishlist</button>
@@ -98,7 +104,7 @@ class MovieDetail extends Component {
                 <img src={movie.imageUrl} className="img-thumbnail" alt={movie.title} />
               </div>
               <div className="col-md-9 p-4">
-                <h1>{movie.title}(<Moment format="YYYY">{movie.updatedAt}</Moment>)</h1>
+                <h1>{movie.title}(<Moment format="YYYY">{movie.publishDate}</Moment>)</h1>
                 {this.props.user ? this.likeButton() : ''}
               </div>
             </div>
