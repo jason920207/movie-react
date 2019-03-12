@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { Navbar, Nav, Dropdown } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCogs, faUser } from '@fortawesome/free-solid-svg-icons'
+import { faCogs, faUser, faHeart, faListAlt } from '@fortawesome/free-solid-svg-icons'
 import './Header.scss'
 
 class Header extends Component {
@@ -28,8 +28,8 @@ class Header extends Component {
         <span><FontAwesomeIcon icon={faUser} /></span>
       </Dropdown.Toggle>
       <Dropdown.Menu>
-        <Link className="nav-link" to={`/${user._id}/favorites`}>Favorite</Link>
-        <Link className="nav-link" to={`/${user._id}/wishlists`}>Wishlist</Link>
+        <Link to={`/${user._id}/favorites`}><FontAwesomeIcon icon={faHeart} /> Favorite</Link>
+        <Link to={`/${user._id}/wishlists`}><FontAwesomeIcon icon={faListAlt} /> Wishlist</Link>
       </Dropdown.Menu>
     </Dropdown>
   )

@@ -5,7 +5,7 @@ import { updateFavorite, getUser, updateWishlist } from '../api'
 import FavoriteIcon from '@material-ui/icons/Favorite'
 import IconButton from '@material-ui/core/IconButton'
 import Star from './Star'
-import Comment from './comment/Comment'
+import Comments from './comment/Comments'
 
 class MovieDetail extends Component {
   constructor (props) {
@@ -95,7 +95,7 @@ class MovieDetail extends Component {
   }
 
   render () {
-    const { movie } = this.props
+    const { movie, user } = this.props
 
     return (
       <main>
@@ -130,9 +130,10 @@ class MovieDetail extends Component {
               </div>
             </div>
           </div>
-          <hr />
+          <Comments
+            user={user}
+            movie={movie}/>
         </div>
-        <Comment />
       </main>
     )
   }

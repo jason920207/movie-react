@@ -50,3 +50,34 @@ export const getUser = (user) => {
     }
   })
 }
+
+export const createComment = (user, movie, text) => {
+  return axios({
+    url: apiUrl + '/comments',
+    method: 'POST',
+    headers: {
+      'Authorization': `Token token=${user.token}`
+    },
+    data: {
+      comment: {
+        text: text,
+        movie: movie._id
+      }
+    }
+  })
+}
+
+export const getCommentByMovie = (user, movie) => {
+  return axios({
+    url: apiUrl + '/comments/' + movie._id,
+    method: 'GET'
+  })
+}
+
+export const updateCommentLike = (user, data) => {
+  return axios({
+    url: apiUrl + '/commentslike/' + data._id,
+    method: 'PATCH',
+    data
+  })
+}

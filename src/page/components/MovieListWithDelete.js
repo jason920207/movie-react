@@ -13,12 +13,7 @@ class ListWithDelete extends Component {
   onDelete () {
     const { isFavorite, isWishlist, movie, user, setUser } = this.props
     if (isFavorite) {
-      console.log('favorite')
-      console.log(user)
-      console.log(movie._id)
-      console.log('favorite before', user.favorite)
       const newFavorite = user.favorite.filter((favmovie) => favmovie._id !== movie._id)
-      console.log('favorite after', newFavorite)
       updateFavorite(user, newFavorite)
         .then(() => getUser(user))
         .then(res => setUser(res.data.user))
@@ -26,9 +21,6 @@ class ListWithDelete extends Component {
     }
 
     if (isWishlist) {
-      console.log('wishlist')
-      console.log(movie._id)
-      console.log('favorite before', user)
       const newWishlist = user.wishlist.filter((wishlist) => wishlist._id !== movie._id)
       updateWishlist(user, newWishlist)
         .then(() => getUser(user))
