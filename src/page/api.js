@@ -109,13 +109,13 @@ export const getComment = (id) => {
 
 export const createMovie = (user, movie) => {
   return axios({
+    contentType: false,
     url: apiUrl + '/movies',
     method: 'POST',
     headers: {
       'Authorization': `Token token=${user.token}`
     },
-    data: {
-      movie
-    }
+    processData: false,
+    data: movie
   })
 }
