@@ -18,6 +18,8 @@ class MovieComment extends Component {
     this.setState({ commentInput: event.target.value })
   }
 
+  setComment = (comments) => this.setState({ comments })
+
   onSubmit (event) {
     event.preventDefault()
     const { user, movie } = this.props
@@ -51,7 +53,8 @@ class MovieComment extends Component {
               comment={comment}
               user={user}
               comments={comments}
-              movie={movie}/>
+              movie={movie}
+              setComment={this.setComment}/>
           ))
           : <h4>Loading</h4>
         }

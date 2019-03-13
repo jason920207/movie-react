@@ -69,15 +69,53 @@ export const createComment = (user, movie, text) => {
 
 export const getCommentByMovie = (user, movie) => {
   return axios({
-    url: apiUrl + '/comments/' + movie._id,
+    url: apiUrl + '/commentsbymovie/' + movie._id,
     method: 'GET'
   })
 }
 
-export const updateCommentLike = (user, data) => {
+export const updateCommentLike = (user, id, likes) => {
   return axios({
-    url: apiUrl + '/commentslike/' + data._id,
+    url: apiUrl + '/commentslike/' + id,
     method: 'PATCH',
-    data
+    headers: {
+      'Authorization': `Token token=${user.token}`
+    },
+    data: {
+      likes
+    }
+  })
+}
+
+export const updateCommentUnlike = (user, id, unlikes) => {
+  return axios({
+    url: apiUrl + '/commentsunlike/' + id,
+    method: 'PATCH',
+    headers: {
+      'Authorization': `Token token=${user.token}`
+    },
+    data: {
+      unlikes
+    }
+  })
+}
+
+export const getComment = (id) => {
+  return axios({
+    url: apiUrl + '/comments/' + id,
+    method: 'GET'
+  })
+}
+
+export const createMovie = (user, movie) => {
+  return axios({
+    url: apiUrl + '/movies',
+    method: 'POST',
+    headers: {
+      'Authorization': `Token token=${user.token}`
+    },
+    data: {
+      movie
+    }
   })
 }

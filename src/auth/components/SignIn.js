@@ -28,17 +28,19 @@ class SignIn extends Component {
       .then(res => {
         setUser(res.data.user)
         this.setState({ token: res.data.user.token })
-        return res.data.user.token
+        return res.data.user.isAdmin
       })
-      // .then(getFavorite)
-      // .then(res => {
-      //   setFavorite(res.data.favorite.movies)
-      //   return this.state.token
-      // })
-      // .then(getWishlist)
-      // .then(res => setwishlist(res.data.wishlist.movies))
-      .then(() => alert(messages.signInSuccess, 'success'))
-      .then(() => history.push('/'))
+      .then((admin) => {
+        alert(messages.signInSuccess, 'success')
+        return admin
+      })
+      .then((admin) => {
+        if (admin) {
+          history.push('/dashboard')
+        } else {
+          history.push('/')
+        }
+      })
       .catch(error => {
         console.error(error)
         this.setState({ email: '', password: '' })

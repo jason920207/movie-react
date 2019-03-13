@@ -3,6 +3,7 @@ import './App.scss'
 import { Route } from 'react-router-dom'
 
 import AuthenticatedRoute from './auth/components/AuthenticatedRoute'
+import AdminRoute from './auth/components/AdminRoute'
 import Header from './header/Header'
 import SignUp from './auth/components/SignUp'
 import SignIn from './auth/components/SignIn'
@@ -13,6 +14,11 @@ import Movie from './page/components/Movie'
 import Favorite from './page/components/Favorite'
 import Wishlist from './page/components/Wishlist'
 import Home from './page/components/homepage/Home'
+
+import DashboardNavbar from './page/components/dashboard/DashboardNavbar'
+import Dashboard from './page/components/dashboard/DashboardHome'
+import CreateMovieForm from './page/components/dashboard/CreateMovieForm'
+import DashboardMovies from './page/components/dashboard/DashboardMovies'
 
 import Alert from 'react-bootstrap/Alert'
 
@@ -49,9 +55,20 @@ class App extends Component {
   render () {
     const { alerts, user } = this.state
 
+    const header = () => {
+      if (user && user.isAdmin) {
+        return <DashboardNavbar />
+      } else {
+        return <Header user={user} setColor={this.setColor} bgColor={this.state.bgColor} navColor={this.state.navColor} />
+      }
+    }
+    //  {(user && user.isAdmin)
+    //     ?  ''
+    //     :  <Header user={user} setColor={this.setColor} bgColor={this.state.bgColor} navColor={this.state.navColor} />
+    // })
     return (
       <React.Fragment>
-        <Header user={user} setColor={this.setColor} bgColor={this.state.bgColor} navColor={this.state.navColor} />
+        { header() }
         {alerts.map((alert, index) => (
           <Alert key={index} dismissible variant={alert.type}>
             <Alert.Heading>
@@ -89,6 +106,15 @@ class App extends Component {
           )} />
           <Route exact path='/' render={() => (
             <Home />
+          )} />
+          <AdminRoute exact user={user} path='/dashboard' render={() => (
+            <Dashboard user={user} setUser={this.setUser}/>
+          )} />
+          <AdminRoute exact user={user} path='/dashboard/createmovie' render={() => (
+            <CreateMovieForm user={user} setUser={this.setUser}/>
+          )} />
+          <AdminRoute exact user={user} path='/dashboard/movies' render={() => (
+            <DashboardMovies user={user} setUser={this.setUser}/>
           )} />
         </main>
       </React.Fragment>
