@@ -1,0 +1,103 @@
+import React, { Component } from 'react'
+import { Button } from 'semantic-ui-react'
+import { updateCommentLike, getComment, updateCommentUnlike } from '../../api'
+import { withRouter } from 'react-router-dom'
+
+class CommentLikeButton extends Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      comment: null,
+      likes: props.comment.likes,
+      unlikes: props.comment.unlikes
+    }
+    this.onClickLike = this.onClickLike.bind(this)
+    this.onClickUnlike = this.onClickUnlike.bind(this)
+  }
+
+  onClickLike () {
+    console.log(this.props.comment)
+    console.log(this.props.movie)
+    // const { comment, movie, user } = this.props
+    const { comment, user } = this.props
+    const CheckLikeList = comment.likes.filter((like) => like === user._id)
+    if (CheckLikeList.length) {
+      console.log('already have')
+    } else {
+      const newLikesList = [...comment.likes, user._id]
+      console.log(newLikesList)
+      updateCommentLike(user, comment._id, newLikesList)
+        .then(() => getComment(comment._id))
+        .then(res => this.setState({ likes: res.data.comment.likes }))
+    }
+  }
+
+  onClickUnlike () {
+    console.log(this.props.comment)
+    console.log(this.props.movie)
+
+    const { comment, user } = this.props
+    const CheckUnlikeList = comment.unlikes.filter((unlike) => unlike === user._id)
+    if (CheckUnlikeList.length) {
+      console.log('already have')
+    } else {
+      const newUnlikesList = [...comment.unlikes, user._id]
+      console.log(newUnlikesList)
+      updateCommentUnlike(user, comment._id, newUnlikesList)
+        .then(() => getComment(comment._id))
+        .then(res => this.setState({ unlikes: res.data.comment.unlikes }))
+    }
+  }
+
+  render () {
+    const { likes, unlikes } = this.state
+    const { user } = this.props
+    const likeButtonStatus = likes.includes(user._id)
+    const unlikeButtonStatus = unlikes.includes(user._id)
+
+    return (
+      <div>
+        {
+          likeButtonStatus
+            ? (<Button
+              color='red'
+              content='Like'
+              icon='heart'
+              label={{ as: 'a', basic: true, content: likes ? `${likes.length}` : '0' }}
+              labelPosition='right'
+              onClick={this.onClickLike}
+              disabled
+            />)
+            : (<Button
+              content='Like'
+              icon='heart'
+              label={{ as: 'a', basic: true, content: likes ? `${likes.length}` : '0' }}
+              labelPosition='left'
+              onClick={this.onClickLike}
+            />)
+        }
+
+        {unlikeButtonStatus
+          ? (<Button
+            color='red'
+            content='Unlike'
+            icon='heart'
+            label={{ as: 'a', basic: true, content: likes ? `${likes.length}` : '0' }}
+            labelPosition='right'
+            onClick={this.onClickLike}
+            disabled
+          />)
+          : (<Button
+            content='Unlike'
+            icon='heart'
+            label={{ as: 'a', basic: true, pointing: 'right', content: unlikes ? `${unlikes.length}` : '0' }}
+            labelPosition='left'
+            onClick={this.onClickUnlike}
+          />)
+        }
+      </div>
+    )
+  }
+}
+
+export default withRouter(CommentLikeButton)

@@ -9,6 +9,7 @@ class SignIn extends Component {
     super()
 
     this.state = {
+      token: '',
       email: '',
       password: ''
     }
@@ -24,9 +25,22 @@ class SignIn extends Component {
     const { alert, history, setUser } = this.props
 
     signIn(this.state)
-      .then(res => setUser(res.data.user))
-      .then(() => alert(messages.signInSuccess, 'success'))
-      .then(() => history.push('/'))
+      .then(res => {
+        setUser(res.data.user)
+        this.setState({ token: res.data.user.token })
+        return res.data.user.isAdmin
+      })
+      .then((admin) => {
+        alert(messages.signInSuccess, 'success')
+        return admin
+      })
+      .then((admin) => {
+        if (admin) {
+          history.push('/dashboard')
+        } else {
+          history.push('/')
+        }
+      })
       .catch(error => {
         console.error(error)
         this.setState({ email: '', password: '' })

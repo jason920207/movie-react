@@ -53,3 +53,23 @@ export const changePassword = (passwords, user) => {
     }
   })
 }
+
+export const getFavorite = (token) => {
+  return axios({
+    url: apiUrl + '/favorites',
+    method: 'GET',
+    headers: {
+      'Authorization': `Token token=${token}`
+    }
+  })
+}
+
+export const getWishlist = (token) => {
+  return axios({
+    url: apiUrl + '/wishlists',
+    method: 'GET',
+    headers: {
+      'Authorization': `Token token=${token}`
+    }
+  })
+}
