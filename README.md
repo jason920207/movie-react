@@ -2,6 +2,10 @@
 
 This repository is for the front end client built react based full-stack javascript application. It features IMBa, a mock movie app. The client relies on React, Express and Mongo, User can add Movie into their favorites and Wishlist, user can comment the movie and can like other user's comment. the admin can create movie and movie image using aws s3 to store the image.
 
+## SCREENSHOT
+![Screenshot](https://imgur.com/wGO0xSh)
+![Screenshot](https://imgur.com/wHXFcge)
+
 ## TECHNOLOGIES IN USE
 
 - REACT.js
