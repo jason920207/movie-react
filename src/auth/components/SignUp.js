@@ -106,12 +106,12 @@ class SignUp extends Component {
                     </div>
                     <button type="submit" className="btn btn-primary btn-user btn-block">Sign Up</button>
                     <hr />
-                    <a href="index.html" className="btn google btn-user btn-block">
+                    { /* <a href="index.html" className="btn google btn-user btn-block">
                       <i className="fab fa-google fa-fw"></i> Register with Google
                     </a>
                     <a href="index.html" className="btn facebook btn-user btn-block">
                       <i className="fab fa-facebook-f fa-fw"></i> Register with Facebook
-                    </a>
+                    </a> */ }
                   </form>
                   <hr />
                   <div className="text-center">

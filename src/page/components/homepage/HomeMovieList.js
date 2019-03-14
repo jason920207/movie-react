@@ -1,16 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
-import classnames from 'classnames'
+// import classnames from 'classnames'
 import Card from '@material-ui/core/Card'
 import CardMedia from '@material-ui/core/CardMedia'
 import CardContent from '@material-ui/core/CardContent'
-import CardActions from '@material-ui/core/CardActions'
-import Collapse from '@material-ui/core/Collapse'
-import IconButton from '@material-ui/core/IconButton'
+// import CardActions from '@material-ui/core/CardActions'
+// import Collapse from '@material-ui/core/Collapse'
+// import IconButton from '@material-ui/core/IconButton'
 import Typography from '@material-ui/core/Typography'
 import red from '@material-ui/core/colors/red'
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
+// import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 
 import { Link } from 'react-router-dom'
 import Moment from 'react-moment'
@@ -49,8 +49,20 @@ class RecipeReviewCard extends React.Component {
     this.setState(state => ({ expanded: !state.expanded }))
   };
 
+  constructor (props) {
+    super(props)
+    this.state = {
+      title: ''
+    }
+  }
+  componentWillMount () {
+    const { movie } = this.props
+    this.setState({ title: movie.title.slice(0, 15) })
+  }
+
   render () {
     const { classes, movie } = this.props
+    const { title } = this.state
 
     return (
       <div className='col-md-3 col-sm-6'>
@@ -59,36 +71,15 @@ class RecipeReviewCard extends React.Component {
             <CardMedia
               className={classes.media}
               image={movie.imageUrl}
-              title="Paella dish"
+              title={movie.title}
             />
           </Link>
           <CardContent>
-            <Typography gutterBottom variant="h5" component="h2">
-              <Link to={`/movies/${movie._id}`}>{movie.title}(<Moment format="YYYY">{movie.publishDate}</Moment>)</Link>
+            <Typography gutterBottom variant="h5" component="h3">
+              <Link to={`/movies/${movie._id}`}>{title}(<Moment format="YYYY">{movie.publishDate}</Moment>)</Link>
             </Typography>
-            <Typography gutterBottom variant="h5" component="h2">
-              <Star />
-            </Typography>
+            <Star imdbRating={movie.imdbRating}/>
           </CardContent>
-          <CardActions className={classes.actions} disableActionSpacing>
-            <IconButton
-              className={classnames(classes.expand, {
-                [classes.expandOpen]: this.state.expanded
-              })}
-              onClick={this.handleExpandClick}
-              aria-expanded={this.state.expanded}
-              aria-label="Show more"
-            >
-              <ExpandMoreIcon />
-            </IconButton>
-          </CardActions>
-          <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
-            <CardContent>
-              <Typography component="p">
-                {movie.description}
-              </Typography>
-            </CardContent>
-          </Collapse>
         </Card>
       </div>
     )

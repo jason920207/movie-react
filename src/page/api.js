@@ -119,3 +119,46 @@ export const createMovie = (user, movie) => {
     data: movie
   })
 }
+
+export const updateMovie = (user, movie, id) => {
+  return axios({
+    url: apiUrl + '/movies/' + id,
+    method: 'PATCH',
+    headers: {
+      'Authorization': `Token token=${user.token}`
+    },
+    data: {
+      movie
+    }
+  })
+}
+
+export const deleteMovie = (user, id) => {
+  return axios({
+    url: apiUrl + '/movies/' + id,
+    method: 'DELETE',
+    headers: {
+      'Authorization': `Token token=${user.token}`
+    }
+  })
+}
+
+export const getMoviesByStar = () => {
+  return axios({
+    url: apiUrl + '/moviesbystar',
+    method: 'GET'
+  })
+}
+
+export const updateAvatar = (user, avatar) => {
+  return axios({
+    url: apiUrl + '/avatar/' + user._id,
+    method: 'PATCH',
+    headers: {
+      'Authorization': `Token token=${user.token}`
+    },
+    data: {
+      avatar
+    }
+  })
+}

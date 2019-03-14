@@ -6,7 +6,12 @@ import FavoriteIcon from '@material-ui/icons/Favorite'
 import IconButton from '@material-ui/core/IconButton'
 import Star from './Star'
 import Comments from './comment/Comments'
+import { Icon } from 'semantic-ui-react'
+// import EmbedExampleYouTube from './embed'
+// import YoutubeComponent from './YoutubeComponent'
+// import { Item } from 'semantic-ui-react'
 
+import ResponsiveEmbed from 'react-responsive-embed'
 class MovieDetail extends Component {
   constructor (props) {
     super(props)
@@ -50,8 +55,7 @@ class MovieDetail extends Component {
     const { movie, user } = this.props
     const newfavorite = user.favorite.filter((fav) => fav._id === movie._id)
     const newwishlist = user.wishlist.filter((wish) => wish._id === movie._id)
-    console.log(newfavorite)
-    console.log(newwishlist)
+
     return (
       <Fragment>
         { newfavorite.length
@@ -73,10 +77,6 @@ class MovieDetail extends Component {
 
   deleteFavorite () {
     const { movie, user, setUser, history } = this.props
-    console.log('favorite')
-    console.log(user)
-    console.log(movie._id)
-    console.log('favorite before', user.favorite)
     const newFavorite = user.favorite.filter((favmovie) => favmovie._id !== movie._id)
     console.log('favorite after', newFavorite)
     updateFavorite(user, newFavorite)
@@ -108,7 +108,8 @@ class MovieDetail extends Component {
               <div className="col-md-9 p-4">
                 <h1>{movie.title}(<Moment format="YYYY">{movie.publishDate}</Moment>)</h1>
                 {this.props.user ? this.likeButton() : ''}
-                <Star />
+                <Star imdbRating={movie.imdbRating}/>
+                <ResponsiveEmbed src={movie.trailer} allowFullScreen />
               </div>
             </div>
           </div>
@@ -116,18 +117,8 @@ class MovieDetail extends Component {
         <div className="container dark-grey-text mt-5">
           <div className="row wow fadeIn ">
             <div className ='col-md-8 col-sm-12 '>
-              <p className="lead font-weight-bold">Description</p>
+              <p className="lead font-weight-bold"><Icon name='content'/>Description</p>
               <p>{ movie.description }</p>
-              <div className ='row'>
-                <div className="row d-flex justify-content-center wow fadeIn">
-                  <div className="col-md-6">
-                    <h4 className="my-4 h4">Additional information</h4>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus suscipit modi sapiente illo soluta odit
-                      voluptates,
-                      quibusdam officia. Neque quibusdam quas a quis porro? Molestias illo neque eum in laborum.</p>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
           <Comments

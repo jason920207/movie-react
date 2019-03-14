@@ -15,11 +15,13 @@ import Favorite from './page/components/Favorite'
 import Wishlist from './page/components/Wishlist'
 import Home from './page/components/homepage/Home'
 
+import ChangeAvatar from './page/components/user/ChangeAvatar'
+
 import DashboardNavbar from './page/components/dashboard/DashboardNavbar'
 import Dashboard from './page/components/dashboard/DashboardHome'
 import CreateMovieForm from './page/components/dashboard/CreateMovieForm'
 import DashboardMovies from './page/components/dashboard/DashboardMovies'
-
+import UpdateMovieForm from './page/components/dashboard/UpdateMovieForm'
 import Alert from 'react-bootstrap/Alert'
 
 class App extends Component {
@@ -104,6 +106,9 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/:id/wishlists' render={() => (
             <Wishlist user={user} setUser={this.setUser}/>
           )} />
+          <AuthenticatedRoute user={user} path='/:id/changeAvatar' render={() => (
+            <ChangeAvatar user={user} setUser={this.setUser}/>
+          )} />
           <Route exact path='/' render={() => (
             <Home />
           )} />
@@ -115,6 +120,9 @@ class App extends Component {
           )} />
           <AdminRoute exact user={user} path='/dashboard/movies' render={() => (
             <DashboardMovies user={user} setUser={this.setUser}/>
+          )} />
+          <AdminRoute exact user={user} path='/dashboard/updatemovie/:id' render={() => (
+            <UpdateMovieForm user={user} setUser={this.setUser}/>
           )} />
         </main>
       </React.Fragment>

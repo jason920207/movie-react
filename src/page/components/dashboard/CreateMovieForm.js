@@ -3,6 +3,7 @@ import { Form, Header } from 'semantic-ui-react'
 import { DateInput } from 'semantic-ui-calendar-react'
 import 'react-datepicker/dist/react-datepicker.css'
 import { createMovie } from '../../api'
+import { withRouter } from 'react-router-dom'
 
 class CreateMovieForm extends Component {
   constructor (props) {
@@ -11,7 +12,8 @@ class CreateMovieForm extends Component {
       date: '',
       title: '',
       imdbRating: '',
-      description: ''
+      description: '',
+      trailer: ''
     }
   }
 
@@ -28,24 +30,16 @@ class CreateMovieForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    const { user } = this.props
-    // const { date, title, imdbRating, description, imageUrl } = this.state
-    // const movie = {
-    //   title,
-    //   publishDate: date,
-    //   imdbRating,
-    //   description,
-    //   imageUrl
-    // }
+    const { user, history } = this.props
     const data = new FormData()
     data.append('publishDate', this.state.date)
     data.append('title', this.state.title)
     data.append('imdbRating', this.state.imdbRating)
     data.append('description', this.state.description)
     data.append('imageUrl', this.state.imageUrl)
-
+    data.append('trailer', this.state.trailer)
     createMovie(user, data)
-      .then(console.log)
+      .then(() => history.push('/dashboard/movies'))
   }
   render () {
     return (
@@ -54,7 +48,7 @@ class CreateMovieForm extends Component {
         <Form onSubmit={this.handleSubmit} encType="multipart/form-data">
           <Form.Group widths='equal'>
             <Form.Input fluid label='Movie Title' placeholder='Movie Title' name='title' onChange={this.handleChange}/>
-            <Form.Input fluid label='IMDB Rate' placeholder='IMDB Rate' name='imdbRating' onChange={this.handleChange}/>
+            <Form.Input fluid label='IMDB Rate' placeholder='IMDB Rate' type="number" name='imdbRating' onChange={this.handleChange}/>
           </Form.Group>
           <Form.Group widths='equal'>
             <DateInput
@@ -66,7 +60,8 @@ class CreateMovieForm extends Component {
               iconPosition="left"
               onChange={this.handleChange}
             />
-            <Form.Input label='Image' name="imageUrl" type="file" size="big" onChange={this.handleChange}/>
+            <Form.Input label='Image' name="imageUrl" type="file" onChange={this.handleChange}/>
+            <Form.Input label='Trailer Url' name='trailer' onChange={this.handleChange}/>
           </Form.Group>
           <Form.TextArea label='Description' placeholder='Tell us more about Movie...' name='description' onChange={this.handleChange}/>
           <Form.Button>Submit</Form.Button>
@@ -76,4 +71,4 @@ class CreateMovieForm extends Component {
   }
 }
 
-export default CreateMovieForm
+export default withRouter(CreateMovieForm)

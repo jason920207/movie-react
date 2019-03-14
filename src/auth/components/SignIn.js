@@ -89,12 +89,12 @@ class SignIn extends Component {
                         </div>
                         <button type="submit" className="btn btn-primary btn-user btn-block">Sign In</button>
                         <hr />
-                        <a href="index.html" className="google btn btn-user btn-block">
+                        { /* <a href="index.html" className="google btn btn-user btn-block">
                           <i className="fab fa-google fa-fw"></i> Login with Google
                         </a>
                         <a href="index.html" className="facebook btn btn-user btn-block">
                           <i className="fab fa-facebook-f fa-fw"></i> Login with Facebook
-                        </a>
+                        </a> */ }
                       </form>
                       <hr />
                       <div className="text-center">
