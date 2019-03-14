@@ -26,7 +26,6 @@ class MovieDetail extends Component {
   addFavorite () {
     const { setUser, alert, history, user, movie } = this.props
     const movieInList = user.favorite.filter((movie1) => movie1._id === movie._id)
-    console.log(movieInList)
     if (!movieInList.length) {
       const favorite = [...user.favorite, movie._id]
       updateFavorite(user, favorite)
@@ -40,7 +39,6 @@ class MovieDetail extends Component {
   addWishlist () {
     const { setUser, alert, history, movie, user } = this.props
     const movieInList = user.wishlist.filter((movie1) => movie1._id === movie._id)
-    console.log(movieInList)
     if (!movieInList.length) {
       const wishlist = [...user.wishlist, movie._id]
       updateWishlist(user, wishlist)
@@ -78,7 +76,6 @@ class MovieDetail extends Component {
   deleteFavorite () {
     const { movie, user, setUser, history } = this.props
     const newFavorite = user.favorite.filter((favmovie) => favmovie._id !== movie._id)
-    console.log('favorite after', newFavorite)
     updateFavorite(user, newFavorite)
       .then(() => getUser(user))
       .then(res => setUser(res.data.user))

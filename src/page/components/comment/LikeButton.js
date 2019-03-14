@@ -22,7 +22,6 @@ class CommentLikeButton extends Component {
     if (CheckLikeList.length) {
     } else {
       const newLikesList = [...comment.likes, user._id]
-      console.log(newLikesList)
       updateCommentLike(user, comment._id, newLikesList)
         .then(() => getComment(comment._id))
         .then(res => this.setState({ likes: res.data.comment.likes }))

@@ -17,7 +17,6 @@ class ListWithDelete extends Component {
       updateFavorite(user, newFavorite)
         .then(() => getUser(user))
         .then(res => setUser(res.data.user))
-        .then(() => console.log('success'))
     }
 
     if (isWishlist) {
@@ -25,7 +24,6 @@ class ListWithDelete extends Component {
       updateWishlist(user, newWishlist)
         .then(() => getUser(user))
         .then(res => setUser(res.data.user))
-        .then(() => console.log('success'))
     }
   }
 
