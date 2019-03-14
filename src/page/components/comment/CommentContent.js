@@ -5,7 +5,7 @@ import LikeButton from './LikeButton'
 const CommentContent = ({ comment, user, movie, setComment }) => (
   <Fragment>
     <Comment>
-      <Comment.Avatar src={user.avatar} rounded/>
+      <Comment.Avatar src={comment.owner.avatar} />
       <Comment.Content>
         <Comment.Author>{comment.owner.email}</Comment.Author>
         <Comment.Metadata>

@@ -23,7 +23,6 @@ class MovieComment extends Component {
   onSubmit (event) {
     event.preventDefault()
     const { user, movie } = this.props
-    console.log(this.state.commentInput)
     createComment(user, movie, this.state.commentInput)
       .then(() => getCommentByMovie(this.props.user, this.props.movie))
       .then(res => this.setState({ comments: res.data.comments }))
@@ -33,7 +32,6 @@ class MovieComment extends Component {
   componentDidMount () {
     getCommentByMovie(this.props.user, this.props.movie)
       .then((res) => {
-        console.log(res)
         this.setState({ comments: res.data.comments
         })
       })
