@@ -176,6 +176,13 @@ class PrimarySearchAppBar extends React.Component {
             </ListItem>
           </Link>
 
+          <Link to='/change-password'>
+            <ListItem button onClick={this.clickHandle}>
+              <ListItemIcon><InboxIcon /></ListItemIcon>
+              <ListItemText primary={'Change Password'} />
+            </ListItem>
+          </Link>
+
           <Link to='/sign-out'>
             <ListItem button onClick={this.clickHandle}>
               <ListItemIcon><InboxIcon /></ListItemIcon>
