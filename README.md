@@ -28,9 +28,9 @@ We made initial wireframes and an ERD for our prompt. We tried several different
 - As a unregistered in user, I would like to see other people's comment.
 - As a admin , i can create Movie and update Movie.
 
-[Link to Wireframes](https://imgur.com/a/GOmCAJ5)
+[Link to Wireframes](https://imgur.com/hqmz1jf)
 
-[Link to ERD](https://imgur.com/a/4AMp392)
+[Link to ERD](https://imgur.com/Pbmfyq0)
 
 ## UNSOLVED PROBLEMS
 
