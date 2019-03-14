@@ -66,7 +66,7 @@ class RecipeReviewCard extends React.Component {
 
     return (
       <div className='col-md-3 col-sm-6'>
-        <Card className={classes.card}>
+        <Card className={classes.card} >
           <Link to={`/movies/${movie._id}`}>
             <CardMedia
               className={classes.media}

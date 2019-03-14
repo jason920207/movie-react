@@ -162,3 +162,10 @@ export const updateAvatar = (user, avatar) => {
     }
   })
 }
+
+export const getMoviesByDate = () => {
+  return axios({
+    url: apiUrl + '/moviesbydate',
+    method: 'GET'
+  })
+}

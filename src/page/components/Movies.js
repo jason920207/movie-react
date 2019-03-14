@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { getMovies, getMoviesByStar } from '../api'
+import { getMovies, getMoviesByStar, getMoviesByDate } from '../api'
 import MovieList from './MovieList'
 import { Item, Divider, Header, Icon } from 'semantic-ui-react'
 import Star from './Star'
@@ -12,8 +12,12 @@ class Products extends Component {
     super()
     this.state = {
       movies: null,
-      bestMovies: null
+      sideMovies: null,
+      bestMovies: null,
+      moviesByDate: null
     }
+    this.onClickTopMovie = this.onClickTopMovie.bind(this)
+    this.onClickMovieByDate = this.onClickMovieByDate.bind(this)
   }
 
   componentDidMount () {
@@ -21,12 +25,26 @@ class Products extends Component {
       .then(res => this.setState({ movies: res.data.movies }))
 
     getMoviesByStar()
-      .then(res => this.setState({ bestMovies: res.data.movies }))
+      .then(res => {
+        this.setState({ sideMovies: res.data.movies })
+        this.setState({ bestMovies: res.data.movies })
+      })
+
+    getMoviesByDate()
+      .then(res => this.setState({ moviesByDate: res.data.movies }))
+  }
+
+  onClickTopMovie () {
+    this.setState({ sideMovies: this.state.bestMovies })
+  }
+
+  onClickMovieByDate () {
+    this.setState({ sideMovies: this.state.moviesByDate })
   }
 
   render () {
-    const { movies, bestMovies } = this.state
-    if (!movies || !bestMovies) {
+    const { movies, sideMovies } = this.state
+    if (!movies || !sideMovies) {
       return (
         <h1>Loading</h1>
       )
@@ -48,9 +66,10 @@ class Products extends Component {
             }
           </div>
           <div className='col-md-3'>
-            <h4><FontAwesomeIcon icon={faFilm} />  Top 10 Movie </h4>
+            <a onClick={this.onClickTopMovie}><FontAwesomeIcon icon={faFilm} /> Top 10 Movie/ </a>
+            <a onClick={this.onClickMovieByDate}><FontAwesomeIcon icon={faFilm} /> Sort By Date </a>
             <Divider />
-            { bestMovies.map((movie) => (
+            { sideMovies.map((movie) => (
               <Fragment key={movie._id}>
                 <Item.Group divided unstackable>
                   <Item>
