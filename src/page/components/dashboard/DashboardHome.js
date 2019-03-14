@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
+import { Image } from 'semantic-ui-react'
 
 class DashboardHome extends Component {
   render () {
     return (
-      <h1>dashboard</h1>
+      <div className='container'>
+        <Image src='https://s3.us-east-2.amazonaws.com/jasonbucket/welcome.jpg' size='huge' centered />
+      </div>
     )
   }
 }
