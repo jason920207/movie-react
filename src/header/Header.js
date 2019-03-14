@@ -28,9 +28,9 @@ class Header extends Component {
         <span><FontAwesomeIcon icon={faUser} /></span>
       </Dropdown.Toggle>
       <Dropdown.Menu>
-        <Link to={`/${user._id}/changeAvatar`}><FontAwesomeIcon icon={faHeart} /> changeAvatar</Link>
-        <Link to={`/${user._id}/favorites`}><FontAwesomeIcon icon={faHeart} /> Favorite</Link>
-        <Link to={`/${user._id}/wishlists`}><FontAwesomeIcon icon={faListAlt} /> Wishlist</Link>
+        <Dropdown.Item eventKey='1'><Link to={`/${user._id}/changeAvatar`}><FontAwesomeIcon icon={faUser} /> Avatar</Link></Dropdown.Item>
+        <Dropdown.Item eventKey='2'><Link to={`/${user._id}/favorites`}><FontAwesomeIcon icon={faHeart} /> Favorite</Link></Dropdown.Item>
+        <Dropdown.Item eventKey='3'><Link to={`/${user._id}/wishlists`}><FontAwesomeIcon icon={faListAlt} /> Wishlist</Link></Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
   )
