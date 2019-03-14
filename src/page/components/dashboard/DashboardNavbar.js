@@ -131,10 +131,6 @@ class PrimarySearchAppBar extends React.Component {
     this.setState({ mobileMoreAnchorEl: null })
   };
 
-  clickHandle = (event) => {
-    console.log(event.target.id)
-  }
-
   render () {
     const { anchorEl, mobileMoreAnchorEl } = this.state
     const { classes } = this.props

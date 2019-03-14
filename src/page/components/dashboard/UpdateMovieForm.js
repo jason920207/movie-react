@@ -20,7 +20,6 @@ class UpdateMovieForm extends Component {
 
   handleChange = (event, { name, value }) => {
     this.setState({ [name]: value })
-    console.log(this.state)
   }
 
   handleSubmit = (event) => {
@@ -54,7 +53,8 @@ class UpdateMovieForm extends Component {
         title: res.data.movie.title,
         imdbRating: res.data.movie.imdbRating,
         publishDate: res.data.movie.publishDate,
-        description: res.data.movie.description
+        description: res.data.movie.description,
+        trailer: res.data.movie.trailer
       }))
   }
 
@@ -85,7 +85,7 @@ class UpdateMovieForm extends Component {
               onChange={this.handleChange}
               required
             />
-            <Form.Input label='Trailer Url' name='trailer' onChange={this.handleChange} required />
+            <Form.Input label='Trailer Url' name='trailer' onChange={this.handleChange} value={this.state.trailer} required />
           </Form.Group>
           <Form.TextArea label='Description' placeholder='Tell us more about Movie...' value={this.state.description} name='description' onChange={this.handleChange} required/>
           <Form.Group>

@@ -19,7 +19,6 @@ class CreateMovieForm extends Component {
 
   handleChange = (event, { name, value }) => {
     if (name === 'imageUrl') {
-      console.log(event.target.files[0])
       this.setState({ imageUrl: event.target.files[0] })
     }
 
