@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { getMovies } from '../../api'
 import HomeMovieList from './HomeMovieList'
+import { withRouter } from 'react-router-dom'
 
 class Movies extends Component {
   constructor () {
@@ -8,6 +9,11 @@ class Movies extends Component {
     this.state = {
       movies: []
     }
+    this.getCard = this.getCard.bind(this)
+  }
+  getCard (id) {
+    const { history } = this.props
+    history.push(`/movies/${id}`)
   }
 
   componentDidMount () {
@@ -36,4 +42,4 @@ class Movies extends Component {
   }
 }
 
-export default Movies
+export default withRouter(Movies)

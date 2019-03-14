@@ -4,7 +4,7 @@ import { Navbar, Nav, Dropdown } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCogs, faUser, faHeart, faListAlt } from '@fortawesome/free-solid-svg-icons'
 import './Header.scss'
-
+import { Icon } from 'semantic-ui-react'
 class Header extends Component {
   constructor (props) {
     super(props)
@@ -14,10 +14,10 @@ class Header extends Component {
   authenticatedOptions = () => (
     <React.Fragment>
       <li className="nav-item active">
-        <Link className="nav-link" to="/change-password">Change Password</Link>
+        <Link className="nav-link" to="/change-password"><Icon name='address card'/>Change Password</Link>
       </li>
       <li className="nav-item active">
-        <Link className="nav-link" to="/sign-out">Sign Out</Link>
+        <Link className="nav-link" to="/sign-out"><Icon name='sign-out'/>Sign Out</Link>
       </li>
     </React.Fragment>
   )
@@ -28,6 +28,7 @@ class Header extends Component {
         <span><FontAwesomeIcon icon={faUser} /></span>
       </Dropdown.Toggle>
       <Dropdown.Menu>
+        <Link to={`/${user._id}/changeAvatar`}><FontAwesomeIcon icon={faHeart} /> changeAvatar</Link>
         <Link to={`/${user._id}/favorites`}><FontAwesomeIcon icon={faHeart} /> Favorite</Link>
         <Link to={`/${user._id}/wishlists`}><FontAwesomeIcon icon={faListAlt} /> Wishlist</Link>
       </Dropdown.Menu>
@@ -37,10 +38,10 @@ class Header extends Component {
   unauthenticatedOptions = (
     <React.Fragment>
       <li className="nav-item active">
-        <Link className="nav-link" to="/sign-up">Sign Up</Link>
+        <Link className="nav-link" to="/sign-up"><Icon name='edit'/>Sign Up</Link>
       </li>
       <li className="nav-item active">
-        <Link to="/sign-in" className="nav-link">Sign In</Link>
+        <Link to="/sign-in" className="nav-link"><Icon name='sign-in'/>Sign In</Link>
       </li>
     </React.Fragment>
   )
@@ -48,10 +49,10 @@ class Header extends Component {
   alwaysOptions = (
     <React.Fragment>
       <li className="nav-item active">
-        <Link to="/" className="nav-link">Home</Link>
+        <Link to="/" className="nav-link"><Icon name='home'/>Home</Link>
       </li>
       <li className="nav-item active">
-        <Link to="/movies" className="nav-link">Movies</Link>
+        <Link to="/movies" className="nav-link"><Icon name='film'/>Movies</Link>
       </li>
     </React.Fragment>
   )
@@ -62,7 +63,7 @@ class Header extends Component {
     return (
       <header className="main-header mb-3">
         <Navbar bg={bgColor} variant={navColor} expand="lg">
-          <Link to='/'><Navbar.Brand>Movie-React</Navbar.Brand></Link>
+          <Link to='/'><Navbar.Brand>React-IMBa</Navbar.Brand></Link>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">

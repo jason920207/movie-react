@@ -165,7 +165,21 @@ class PrimarySearchAppBar extends React.Component {
           <Link to='/dashboard/movies'>
             <ListItem button onClick={this.clickHandle}>
               <ListItemIcon><InboxIcon /></ListItemIcon>
+              <ListItemText primary={'DashBoard Movies'} />
+            </ListItem>
+          </Link>
+
+          <Link to='/movies'>
+            <ListItem button onClick={this.clickHandle}>
+              <ListItemIcon><InboxIcon /></ListItemIcon>
               <ListItemText primary={'Movies'} />
+            </ListItem>
+          </Link>
+
+          <Link to='/sign-out'>
+            <ListItem button onClick={this.clickHandle}>
+              <ListItemIcon><InboxIcon /></ListItemIcon>
+              <ListItemText primary={'Sign Out'} />
             </ListItem>
           </Link>
 

@@ -16,13 +16,10 @@ class CommentLikeButton extends Component {
   }
 
   onClickLike () {
-    console.log(this.props.comment)
-    console.log(this.props.movie)
     // const { comment, movie, user } = this.props
     const { comment, user } = this.props
     const CheckLikeList = comment.likes.filter((like) => like === user._id)
     if (CheckLikeList.length) {
-      console.log('already have')
     } else {
       const newLikesList = [...comment.likes, user._id]
       console.log(newLikesList)
@@ -33,16 +30,11 @@ class CommentLikeButton extends Component {
   }
 
   onClickUnlike () {
-    console.log(this.props.comment)
-    console.log(this.props.movie)
-
     const { comment, user } = this.props
     const CheckUnlikeList = comment.unlikes.filter((unlike) => unlike === user._id)
     if (CheckUnlikeList.length) {
-      console.log('already have')
     } else {
       const newUnlikesList = [...comment.unlikes, user._id]
-      console.log(newUnlikesList)
       updateCommentUnlike(user, comment._id, newUnlikesList)
         .then(() => getComment(comment._id))
         .then(res => this.setState({ unlikes: res.data.comment.unlikes }))
