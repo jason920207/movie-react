@@ -12,7 +12,7 @@ class UpdateMovieForm extends Component {
       movie: null,
       title: '',
       imdbRating: 0,
-      publishDate: '',
+      date: '',
       description: '',
       trailer: ''
     }
@@ -26,11 +26,11 @@ class UpdateMovieForm extends Component {
     event.preventDefault()
     const { user, history } = this.props
     const { imageUrl } = this.state.movie
-    const { title, imdbRating, publishDate, description, movie, trailer } = this.state
+    const { title, imdbRating, date, description, movie, trailer } = this.state
     const data = {
       title,
       imdbRating,
-      publishDate,
+      publishDate: date,
       description,
       imageUrl,
       trailer
@@ -52,7 +52,7 @@ class UpdateMovieForm extends Component {
         movie: res.data.movie,
         title: res.data.movie.title,
         imdbRating: res.data.movie.imdbRating,
-        publishDate: res.data.movie.publishDate,
+        date: res.data.movie.publishDate,
         description: res.data.movie.description,
         trailer: res.data.movie.trailer
       }))
@@ -80,7 +80,7 @@ class UpdateMovieForm extends Component {
               label='Date'
               name="date"
               placeholder="Date"
-              value={this.state.publishDate}
+              value={this.state.date}
               iconPosition="left"
               onChange={this.handleChange}
               required
