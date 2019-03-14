@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react'
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { updateWishlist, updateFavorite, getUser } from '../api'
-
+import { Link } from 'react-router-dom'
 class ListWithDelete extends Component {
   constructor (props) {
     super(props)
@@ -35,11 +35,11 @@ class ListWithDelete extends Component {
           <div className="card mb-3">
             <div className="row no-gutters">
               <div className="col-md-4">
-                <img src={movie.imageUrl} className="card-img pt-2 pl-2" alt={movie.title} />
+                <Link to={`/movies/${movie._id}`}><img src={movie.imageUrl} className="card-img pt-2 pl-2" alt={movie.title} /></Link>
               </div>
               <div className="col-md-7">
                 <div className="card-body">
-                  <h5 className="card-title">{movie.title}</h5>
+                  <Link to={`/movies/${movie._id}`}><h5 className="card-title">{movie.title}</h5></Link>
                   <p className="card-text">{movie.description}</p>
                   <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
                 </div>
