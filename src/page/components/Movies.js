@@ -6,6 +6,7 @@ import Star from './Star'
 // import YoutubeComponent from './YoutubeComponent'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFilm } from '@fortawesome/free-solid-svg-icons'
+import Moment from 'react-moment'
 
 class Products extends Component {
   constructor () {
@@ -76,6 +77,7 @@ class Products extends Component {
                     <Item.Image src={movie.imageUrl} />
                   </Item>
                   <h4>{movie.title}</h4>
+                  <h5>Publish Date:<Moment format="YYYY-MM-DD">{movie.publishDate}</Moment></h5>
                   <Star imdbRating={movie.imdbRating} />
                 </Item.Group>
               </Fragment>

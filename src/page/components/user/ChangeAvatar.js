@@ -66,6 +66,9 @@ class ChangeAvatar extends Component {
             </Grid.Column>
           ))
           }
+          <Image as='a' src='https://s3.us-east-2.amazonaws.com/jasonbucket/tenor.gif' size='tiny'
+            onClick={() => this.onChange('https://s3.us-east-2.amazonaws.com/jasonbucket/tenor.gif'
+            )} href='https://jason920207.github.io/tic-tac-toe/'/>
         </Grid>
       </div>
 
