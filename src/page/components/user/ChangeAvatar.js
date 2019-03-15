@@ -66,10 +66,15 @@ class ChangeAvatar extends Component {
             </Grid.Column>
           ))
           }
-          <Image as='a' src='https://s3.us-east-2.amazonaws.com/jasonbucket/tenor.gif' size='tiny'
+          <Modal trigger={<Image as='a' src='https://s3.us-east-2.amazonaws.com/jasonbucket/tenor.gif' size='tiny'
             onClick={() => this.onChange('https://s3.us-east-2.amazonaws.com/jasonbucket/tenor.gif'
-            )} href='https://jason920207.github.io/tic-tac-toe/'/>
-          <Modal trigger={ <Image as='a' src='https://s3.us-east-2.amazonaws.com/jasonbucket/10455766_657348364314222_7463937380643555250_n1.jpg' size='tiny'
+            )} />} >
+            <Modal.Header>Play A Game?</Modal.Header>
+            <Modal.Content image>
+              <Image as='a' href='https://jason920207.github.io/tic-tac-toe/' wrapped size='medium' src='https://s3.us-east-2.amazonaws.com/jasonbucket/2000px-Tic_tac_toe.svg.png' />
+            </Modal.Content>
+          </Modal>
+          <Modal centered={false} trigger={ <Image as='a' src='https://s3.us-east-2.amazonaws.com/jasonbucket/10455766_657348364314222_7463937380643555250_n1.jpg' size='tiny'
             onClick={() => this.onChange('https://s3.us-east-2.amazonaws.com/jasonbucket/10455766_657348364314222_7463937380643555250_n1.jpg'
             )}/>}>
             <Modal.Header>Congratulations!!! WDI 29 We are Full-Stack Developer Now</Modal.Header>
