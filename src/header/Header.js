@@ -55,7 +55,7 @@ class Header extends Component {
         <Link to="/movies" className="nav-link"><Icon name='film'/>Movies</Link>
       </li>
       <li className="nav-item active">
-        <Link to="/yelpsearch" className="nav-link"><Icon name='film'/>Search Movie</Link>
+        <Link to="/yelpsearch" className="nav-link"><Icon name='film'/>Search Theater</Link>
       </li>
     </React.Fragment>
   )

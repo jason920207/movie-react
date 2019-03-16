@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Icon, Item, Label } from 'semantic-ui-react'
+import { Item, Label } from 'semantic-ui-react'
 import Star from './Star'
 
 class TheaterList extends Component {
@@ -21,10 +21,10 @@ class TheaterList extends Component {
             <h5>{theater.location.address1} {theater.location.city}</h5>
           </Item.Description>
           <Item.Extra>
-            <Button primary floated='right'>
+            { /* <Button primary floated='right'>
               Buy tickets
               <Icon name='right chevron' />
-            </Button>
+            </Button> */}
           </Item.Extra>
         </Item.Content>
       </Item>
