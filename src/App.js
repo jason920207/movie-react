@@ -22,6 +22,8 @@ import Dashboard from './page/components/dashboard/DashboardHome'
 import CreateMovieForm from './page/components/dashboard/CreateMovieForm'
 import DashboardMovies from './page/components/dashboard/DashboardMovies'
 import UpdateMovieForm from './page/components/dashboard/UpdateMovieForm'
+import DashboardGame from './page/components/dashboard/DashboardGame'
+import GameBoard from './page/components/dashboard/Gameboard'
 
 import YelpSearch from './yelp/components/YelpSearch'
 
@@ -127,8 +129,14 @@ class App extends Component {
           <AdminRoute exact user={user} path='/dashboard/movies' render={() => (
             <DashboardMovies user={user} setUser={this.setUser}/>
           )} />
+          <AdminRoute exact user={user} path='/dashboard/games' render={() => (
+            <DashboardGame user={user} setUser={this.setUser}/>
+          )} />
           <AdminRoute exact user={user} path='/dashboard/updatemovie/:id' render={() => (
             <UpdateMovieForm user={user} setUser={this.setUser}/>
+          )} />
+          <AdminRoute exact user={user} path='/dashboard/games/:id' render={() => (
+            <GameBoard user={user} setUser={this.setUser}/>
           )} />
         </main>
       </React.Fragment>

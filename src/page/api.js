@@ -169,3 +169,23 @@ export const getMoviesByDate = () => {
     method: 'GET'
   })
 }
+
+export const getGames = (user) => {
+  return axios({
+    url: apiUrl + '/games',
+    method: 'GET',
+    headers: {
+      'Authorization': `Token token=${user.token}`
+    }
+  })
+}
+
+export const getGame = (user, id) => {
+  return axios({
+    url: apiUrl + '/games/' + id,
+    method: 'GET',
+    headers: {
+      'Authorization': `Token token=${user.token}`
+    }
+  })
+}
