@@ -64,7 +64,7 @@ class App extends Component {
 
     const header = () => {
       if (user && user.isAdmin) {
-        return <DashboardNavbar />
+        return <DashboardNavbar user={user}/>
       } else {
         return <Header user={user} setColor={this.setColor} bgColor={this.state.bgColor} navColor={this.state.navColor} />
       }
