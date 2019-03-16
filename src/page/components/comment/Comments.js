@@ -58,7 +58,7 @@ class MovieComment extends Component {
         }
         { user
           ? (<Form reply onSubmit={this.onSubmit}>
-            <Form.TextArea onChange={this.onChangeHandle} value={commentInput} name='comment' />
+            <Form.TextArea required onChange={this.onChangeHandle} value={commentInput} name='comment' />
             <Button content='Add Reply' labelPosition='left' icon='edit' primary />
           </Form>)
           : (<Link className="btn btn-primary" to="/sign-in">Please Sign In To Comment</Link>)
