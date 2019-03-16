@@ -22,6 +22,9 @@ import Dashboard from './page/components/dashboard/DashboardHome'
 import CreateMovieForm from './page/components/dashboard/CreateMovieForm'
 import DashboardMovies from './page/components/dashboard/DashboardMovies'
 import UpdateMovieForm from './page/components/dashboard/UpdateMovieForm'
+
+import YelpSearch from './yelp/components/YelpSearch'
+
 import Alert from 'react-bootstrap/Alert'
 
 class App extends Component {
@@ -111,6 +114,9 @@ class App extends Component {
           )} />
           <Route exact path='/' render={() => (
             <Home />
+          )} />
+          <Route exact path='/yelpsearch' render={() => (
+            <YelpSearch />
           )} />
           <AdminRoute exact user={user} path='/dashboard' render={() => (
             <Dashboard user={user} setUser={this.setUser}/>
