@@ -171,14 +171,15 @@ class PrimarySearchAppBar extends React.Component {
               <ListItemText primary={'Movies'} />
             </ListItem>
           </Link>
-
-          <Link to='/dashboard/games'>
-            <ListItem button onClick={this.clickHandle}>
-              <ListItemIcon><InboxIcon /></ListItemIcon>
-              <ListItemText primary={'臭猪的私密小天地'} />
-            </ListItem>
-          </Link>
-
+          { this.props.user.email === 'na@na'
+            ? <Link to='/dashboard/games'>
+              <ListItem button onClick={this.clickHandle}>
+                <ListItemIcon><InboxIcon /></ListItemIcon>
+                <ListItemText primary={'臭猪的私密小天地'} />
+              </ListItem>
+            </Link>
+            : ''
+          }
           <Link to='/change-password'>
             <ListItem button onClick={this.clickHandle}>
               <ListItemIcon><InboxIcon /></ListItemIcon>
