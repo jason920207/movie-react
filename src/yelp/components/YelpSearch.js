@@ -1,7 +1,8 @@
 import React, { Component, Fragment } from 'react'
-import { Button, Form, Segment, Item } from 'semantic-ui-react'
+import { Button, Form, Segment, Item, Header, Icon } from 'semantic-ui-react'
 import { postLocation } from '../api'
 import TheaterList from './TheaterList'
+// import TitlebarGridList from './TheaterCard'
 
 class YelpSearch extends Component {
   constructor () {
@@ -43,11 +44,17 @@ class YelpSearch extends Component {
           </Form>
         </Segment>
         <div className='container'>
+
           <Item.Group divided>
             { theaters
-              ? theaters.map(theater =>
-                <TheaterList key={theater.id} theater={theater}/>
-              )
+              ? (
+                <Fragment>
+                  <Header as='h2' icon textAlign='center'>
+                    <Icon name='users' circular />
+                    <Header.Content>Friends</Header.Content>
+                  </Header>
+                  {theaters.map(theater => <TheaterList key={theater.id} theater={theater}/>
+                  )}</Fragment>)
               : ''
             }
           </Item.Group>
