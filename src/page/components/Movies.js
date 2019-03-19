@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { getMovies, getMoviesByStar, getMoviesByDate } from '../api'
 import MovieList from './MovieList'
-import { Item, Divider, Header, Icon } from 'semantic-ui-react'
+import { Item, Divider, Header, Icon, Pagination } from 'semantic-ui-react'
 import Star from './Star'
 // import YoutubeComponent from './YoutubeComponent'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -13,17 +13,22 @@ class Products extends Component {
     super()
     this.state = {
       movies: null,
+      moviesSelect: null,
       sideMovies: null,
       bestMovies: null,
-      moviesByDate: null
+      moviesByDate: null,
+      totalPages: 10,
+      activePage: 1,
+      moviesPerPage: 5
     }
     this.onClickTopMovie = this.onClickTopMovie.bind(this)
     this.onClickMovieByDate = this.onClickMovieByDate.bind(this)
+    this.handlePaginationChange = this.handlePaginationChange.bind(this)
   }
 
   componentDidMount () {
     getMovies()
-      .then(res => this.setState({ movies: res.data.movies }))
+      .then(res => this.setState({ movies: res.data.movies, totalPages: (res.data.movies.length / this.state.moviesPerPage) }))
 
     getMoviesByStar()
       .then(res => {
@@ -43,13 +48,20 @@ class Products extends Component {
     this.setState({ sideMovies: this.state.moviesByDate })
   }
 
+  handlePaginationChange = (e, { activePage }) => {
+    this.setState({ activePage })
+  }
+
   render () {
-    const { movies, sideMovies } = this.state
+    const { movies, sideMovies, totalPages, activePage, moviesPerPage } = this.state
     if (!movies || !sideMovies) {
       return (
         <h1>Loading</h1>
       )
     }
+    const indexOfLastTodo = activePage * moviesPerPage
+    const indexOfFirstTodo = indexOfLastTodo - moviesPerPage
+    const currentMovies = movies.slice(indexOfFirstTodo, indexOfLastTodo)
 
     return (
       <div className='container'>
@@ -59,12 +71,17 @@ class Products extends Component {
         </Header>
         <div className='row'>
           <div className='col-md-9 col-sm-12'>
-            { movies.map((movie) => (
+            { currentMovies.map((movie) => (
               <MovieList
                 key={movie._id}
                 movie={movie}/>
             ))
             }
+            <Pagination
+              defaultActivePage={5}
+              totalPages={totalPages}
+              activePage={activePage}
+              onPageChange={this.handlePaginationChange} />
           </div>
           <div className='col-md-3'>
             <a onClick={this.onClickTopMovie}><FontAwesomeIcon icon={faFilm} /> Top 10 Movie/ </a>
