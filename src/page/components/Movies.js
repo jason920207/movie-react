@@ -28,7 +28,7 @@ class Products extends Component {
 
   componentDidMount () {
     getMovies()
-      .then(res => this.setState({ movies: res.data.movies, totalPages: (res.data.movies.length / this.state.moviesPerPage) }))
+      .then(res => this.setState({ movies: res.data.movies, totalPages: parseInt(res.data.movies.length / this.state.moviesPerPage) + 1 }))
 
     getMoviesByStar()
       .then(res => {
@@ -60,6 +60,7 @@ class Products extends Component {
         <h1>Loading</h1>
       )
     }
+    console.log('total page', totalPages)
     const indexOfLastTodo = activePage * moviesPerPage
     const indexOfFirstTodo = indexOfLastTodo - moviesPerPage
     const currentMovies = movies.slice(indexOfFirstTodo, indexOfLastTodo)
@@ -79,7 +80,6 @@ class Products extends Component {
             ))
             }
             <Pagination
-              defaultActivePage={5}
               totalPages={totalPages}
               activePage={activePage}
               onPageChange={this.handlePaginationChange} />
