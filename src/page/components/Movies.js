@@ -19,7 +19,7 @@ class Products extends Component {
       moviesByDate: null,
       totalPages: 10,
       activePage: 1,
-      moviesPerPage: 10
+      moviesPerPage: 20
     }
     this.onClickTopMovie = this.onClickTopMovie.bind(this)
     this.onClickMovieByDate = this.onClickMovieByDate.bind(this)
