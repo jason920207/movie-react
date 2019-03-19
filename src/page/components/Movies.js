@@ -19,7 +19,7 @@ class Products extends Component {
       moviesByDate: null,
       totalPages: 10,
       activePage: 1,
-      moviesPerPage: 20
+      moviesPerPage: 15
     }
     this.onClickTopMovie = this.onClickTopMovie.bind(this)
     this.onClickMovieByDate = this.onClickMovieByDate.bind(this)
@@ -49,6 +49,7 @@ class Products extends Component {
   }
 
   handlePaginationChange = (e, { activePage }) => {
+    console.log(activePage)
     this.setState({ activePage })
   }
 
