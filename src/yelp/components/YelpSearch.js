@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { Button, Form, Segment, Item, Header, Icon } from 'semantic-ui-react'
+import { Button, Form, Segment, Item, Header, Image } from 'semantic-ui-react'
 import { postLocation } from '../api'
 import TheaterList from './TheaterList'
 // import TitlebarGridList from './TheaterCard'
@@ -21,12 +21,7 @@ class YelpSearch extends Component {
 
   onSubmitHandle (event) {
     postLocation(this.state.location)
-      .then(res => {
-        console.log(res.data.theater)
-        return res
-      })
       .then(res => this.setState({ theaters: res.data.theater }))
-      .then(() => console.log(this.state.theaters))
   }
 
   render () {
@@ -49,9 +44,9 @@ class YelpSearch extends Component {
             { theaters
               ? (
                 <Fragment>
-                  <Header as='h2' icon textAlign='center'>
-                    <Icon name='users' circular />
-                    <Header.Content>Friends</Header.Content>
+                  <Header as='h2' textAlign='center'>
+                    <Image circular src='https://farm6.staticflickr.com/5180/5540543936_423e37dae4_b.jpg'/>
+                    <Header.Content>Theater</Header.Content>
                   </Header>
                   {theaters.map(theater => <TheaterList key={theater.id} theater={theater}/>
                   )}</Fragment>)
