@@ -49,7 +49,6 @@ class Products extends Component {
   }
 
   handlePaginationChange = (e, { activePage }) => {
-    console.log(activePage)
     this.setState({ activePage })
   }
 
@@ -60,7 +59,6 @@ class Products extends Component {
         <h1>Loading</h1>
       )
     }
-    console.log('total page', totalPages)
     const indexOfLastTodo = activePage * moviesPerPage
     const indexOfFirstTodo = indexOfLastTodo - moviesPerPage
     const currentMovies = movies.slice(indexOfFirstTodo, indexOfLastTodo)
