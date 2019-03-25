@@ -24,7 +24,6 @@ import React from 'react'
 
 function MapWithAMarker (props) {
   const coordinates = props.coordinates
-  console.log(coordinates)
   return (
     <GoogleMap
       defaultZoom={16}

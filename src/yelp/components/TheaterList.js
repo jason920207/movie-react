@@ -2,12 +2,10 @@ import React, { Component, Fragment } from 'react'
 import { Item, Label } from 'semantic-ui-react'
 import Star from './Star'
 import MapWithAMarker from './googleMap'
-import { GOOGLE_MAP } from './config.js'
 
 class TheaterList extends Component {
   render () {
     const { theater } = this.props
-    // console.log(theater)
     return (
       <Fragment>
         <Item>
@@ -27,7 +25,7 @@ class TheaterList extends Component {
               <h5>{theater.location.address1}</h5>
               <h5>{theater.location.city}</h5>
               <MapWithAMarker
-                googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${GOOGLE_MAP}&v=3.exp&libraries=geometry,drawing,places`}
+                googleMapURL={'https://maps.googleapis.com/maps/api/js?key=AIzaSyAvdlALqHeitBXQa71P48T2p9-0K6v-Uio&v=3.exp&libraries=geometry,drawing,places'}
                 loadingElement={<div style={{ height: '100%' }} />}
                 containerElement={<div style={{ height: '300px' }} />}
                 mapElement={<div style={{ height: '100%' }} />}
