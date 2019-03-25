@@ -1,10 +1,13 @@
 import React, { Component, Fragment } from 'react'
 import { Item, Label } from 'semantic-ui-react'
 import Star from './Star'
+import MapWithAMarker from './googleMap'
+import { GOOGLE_MAP } from './config.js'
 
 class TheaterList extends Component {
   render () {
     const { theater } = this.props
+    // console.log(theater)
     return (
       <Fragment>
         <Item>
@@ -19,10 +22,17 @@ class TheaterList extends Component {
             <Item.Description>
               <Star rating={theater.rating} review={theater.review_count}/>
             </Item.Description>
-            <Item.Extra>
+            <Item.Extra floated='right'>
               <h5>{theater.display_phone}</h5>
               <h5>{theater.location.address1}</h5>
               <h5>{theater.location.city}</h5>
+              <MapWithAMarker
+                googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${GOOGLE_MAP}&v=3.exp&libraries=geometry,drawing,places`}
+                loadingElement={<div style={{ height: '100%' }} />}
+                containerElement={<div style={{ height: '300px' }} />}
+                mapElement={<div style={{ height: '100%' }} />}
+                coordinates={theater.coordinates}
+              />
               { /* <Button primary floated='right'>
               Buy tickets
               <Icon name='right chevron' />
