@@ -22,3 +22,4 @@ yarn-debug.log*
 yarn-error.log*
 
 .env
+/src/yelp/components/config.js
