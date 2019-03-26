@@ -12,6 +12,7 @@ class MovieComment extends Component {
     }
     this.onChangeHandle = this.onChangeHandle.bind(this)
     this.onSubmit = this.onSubmit.bind(this)
+    this.onChangeLike = this.onChangeLike.bind(this)
   }
 
   onChangeHandle (event) {
@@ -27,6 +28,14 @@ class MovieComment extends Component {
       .then(() => getCommentByMovie(this.props.user, this.props.movie))
       .then(res => this.setState({ comments: res.data.comments }))
       .then(() => this.setState({ commentInput: '' }))
+  }
+
+  onChangeLike () {
+    getCommentByMovie(this.props.user, this.props.movie)
+      .then((res) => {
+        this.setState({ comments: res.data.comments
+        })
+      })
   }
 
   componentDidMount () {
@@ -52,7 +61,8 @@ class MovieComment extends Component {
               user={user}
               comments={comments}
               movie={movie}
-              setComment={this.setComment}/>
+              setComment={this.setComment}
+              onChangeLike={this.onChangeLike}/>
           ))
           : <h4>Loading</h4>
         }

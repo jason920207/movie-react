@@ -25,6 +25,7 @@ class CommentLikeButton extends Component {
       updateCommentLike(user, comment._id, newLikesList)
         .then(() => getComment(comment._id))
         .then(res => this.setState({ likes: res.data.comment.likes }))
+        .then(() => this.props.onChangeLike())
     }
   }
 

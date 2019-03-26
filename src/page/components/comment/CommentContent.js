@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import { Comment } from 'semantic-ui-react'
 import Moment from 'react-moment'
 import LikeButton from './LikeButton'
-const CommentContent = ({ comment, user, movie, setComment }) => (
+const CommentContent = ({ comment, user, movie, setComment, onChangeLike }) => (
   <Fragment>
     <Comment>
       <Comment.Avatar src={comment.owner.avatar} />
@@ -13,7 +13,13 @@ const CommentContent = ({ comment, user, movie, setComment }) => (
         </Comment.Metadata>
         <Comment.Text>{comment.text}</Comment.Text>
         {user
-          ? <LikeButton key={comment._id} comment={comment} user={user} movie={movie} setComment={setComment} />
+          ? <LikeButton
+            key={comment._id}
+            comment={comment}
+            user={user}
+            movie={movie}
+            setComment={setComment}
+            onChangeLike={onChangeLike} />
           : ''
         }
       </Comment.Content>
