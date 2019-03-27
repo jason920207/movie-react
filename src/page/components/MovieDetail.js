@@ -105,9 +105,13 @@ class MovieDetail extends Component {
               <div className="col-md-9 p-4">
                 <h1>{movie.title}(<Moment format="YYYY">{movie.publishDate}</Moment>)</h1>
                 {this.props.user ? this.likeButton() : ''}
-                IMDB: <Star imdbRating={movie.imdbRating}/>
+                <h4>IMDB: <Star imdbRating={movie.imdbRating}/></h4>
                 <h4>Release Dates: <Moment format="YYYY-MM-DD">{movie.publishDate}</Moment></h4>
-                <ResponsiveEmbed src={movie.trailer} allowFullScreen />
+                {movie.trailer
+                  ? <ResponsiveEmbed src={movie.trailer} allowFullScreen />
+                  : ''
+                }
+
               </div>
             </div>
           </div>
