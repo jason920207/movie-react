@@ -35,7 +35,7 @@ class App extends Component {
 
     this.state = {
       user: null,
-      alerts: [],
+      alert: null,
       // favorite: null,
       // wishlist: null,
       bgColor: 'light',
@@ -51,16 +51,19 @@ class App extends Component {
     this.setState({ bgColor: bg, navColor: nav })
   }
 
+  onCloseAlert = () => {
+    setTimeout(function () {
+      return this.setState({ alert: null })
+    }.bind(this), 2000)
+  }
   // setFavorite = favorite => this.setState({ favorite })
   //
   // setwishlist = wishlist => this.setState({ wishlist })
-
   alert = (message, type) => {
-    this.setState({ alerts: [...this.state.alerts, { message, type }] })
+    this.setState({ alert: { message, type } })
   }
-
   render () {
-    const { alerts, user } = this.state
+    const { alert, user } = this.state
 
     const header = () => {
       if (user && user.isAdmin) {
@@ -76,13 +79,15 @@ class App extends Component {
     return (
       <React.Fragment>
         { header() }
-        {alerts.map((alert, index) => (
-          <Alert key={index} dismissible variant={alert.type}>
+        { alert
+          ? (<Alert variant={alert.type}>
             <Alert.Heading>
               {alert.message}
+              {this.onCloseAlert()}
             </Alert.Heading>
-          </Alert>
-        ))}
+          </Alert>)
+          : ''
+        }
         <main className="container-fluid">
           <Route path='/sign-up' render={() => (
             <SignUp

@@ -11,7 +11,7 @@ const ItemExampleDivided = ({ movie }) => (
       <Item.Content>
         <Item.Header><Link to={`/movies/${movie._id}`}>{movie.title}</Link></Item.Header>
         <Item.Meta>
-          <Star imdbRating={movie.imdbRating} />
+          IMDB: <Star imdbRating={movie.imdbRating} />
         </Item.Meta>
         <Item.Meta>
           Release Dates: <Moment format="YYYY-MM-DD">{movie.publishDate}</Moment>
